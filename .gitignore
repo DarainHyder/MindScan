@@ -6,13 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+
 # Ignore Python virtual environments
 health_venv/
 venv/
 env/
 .venv/
 ENV/
-
 
 # Distribution / packaging
 .Python
