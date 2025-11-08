@@ -35,15 +35,15 @@ AUTHOR_TECH = [
     "CI/CD ready (train baseline/transformer, artifact uploads)",
 ]
 AUTHOR_LINKS = {
-    "GitHub": "https://github.com/your-handle",
-    "LinkedIn": "https://www.linkedin.com/in/your-handle/",
-    "Email": "mailto:you@example.com",
-    "Portfolio": "https://your-portfolio.site",
+    "GitHub": "https://github.com/DarainHyder",
+    "LinkedIn": "https://www.linkedin.com/in/syed-darain-hyder-kazmi/",
+    "Email": "mailto:daarainhyder21@gmail.com",
+    "Portfolio": "https://darainhyder.netlify.app/",
 }
 
 # Image locations
 AVATAR_CANDIDATES = [
-    "assets/profile.jpg",
+    "assets/darain_1.jpg",
     "assets/profile.png",
     "assets/avatar.jpg",
     "assets/avatar.png",
