@@ -55,7 +55,7 @@ pip install -r requirements.txt
 
 ### Step 2: Download Dataset
 
-**Option A: Kaggle Reddit Mental Health Dataset (Recommended for Quick Start)**
+**Kaggle Reddit Mental Health Dataset (Recommended for Quick Start)**
 
 1. Go to: https://www.kaggle.com/datasets/suchintikasarkar/sentiment-analysis-for-mental-health
 2. Click "Download" (requires free Kaggle account)
@@ -306,21 +306,8 @@ Check that your CSV is in the correct location:
 - For Kaggle: `data/raw/mental_health.csv`
 - For DAIC-WOZ: `data/raw/daic_woz/`
 
-### Issue: Flask port already in use
-
-Change port in `app.py` line 461:
-
-```python
-app.run(debug=True, host='0.0.0.0', port=5001)  # changed from 5000
-```
 
 ## 📚 Additional Resources
-
-### Mental Health Resources
-
-- **National Suicide Prevention Lifeline**: 988 (US)
-- **Crisis Text Line**: Text HOME to 741741
-- **International**: https://findahelpline.com
 
 ### Technical Documentation
 
@@ -330,7 +317,6 @@ app.run(debug=True, host='0.0.0.0', port=5001)  # changed from 5000
 
 ### Datasets
 
-- **RSDD Dataset**: https://georgetown-ir-lab.github.io/
 - **DAIC-WOZ**: https://dcapswoz.ict.usc.edu/
 - **Kaggle Datasets**: https://www.kaggle.com/datasets
 
@@ -341,7 +327,6 @@ Contributions are welcome! Areas for improvement:
 - [ ] Add LIME/SHAP explainability visualizations
 - [ ] Implement model calibration
 - [ ] Add demographic bias analysis
-- [ ] Create Docker container
 - [ ] Add unit tests
 - [ ] Implement A/B testing framework
 - [ ] Add model monitoring dashboard
@@ -350,16 +335,8 @@ Contributions are welcome! Areas for improvement:
 
 This project is for educational purposes. Please check individual dataset licenses before use.
 
-## ⚠️ Final Warning
-
-**This tool should NEVER replace professional mental health care. If you or someone you know is in crisis:**
-
-- **US**: Call or text 988 (Suicide & Crisis Lifeline)
-- **International**: Visit https://findahelpline.com
-- **Emergency**: Call local emergency services (911 in US)
-
 ---
 
 Built with ❤️ for mental health awareness and education.
 
-**Remember: It's okay to not be okay. Help is available.
+**Remember: It's okay to not be okay. Help is available.**

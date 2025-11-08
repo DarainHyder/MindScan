@@ -44,9 +44,9 @@ AUTHOR_LINKS = {
 # Image locations
 AVATAR_CANDIDATES = [
     "assets/darain_1.jpg",
-    "assets/darain_1.png",
     "assets/darain_1.jpg",
-    "assets/darain_1.png",
+    "assets/darain_1.jpg",
+    "assets/darain_1.jpg",
 ]
 HERO_BG_CANDIDATES = [
     "assets/hero_bg.jpg",
