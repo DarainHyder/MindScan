@@ -44,9 +44,9 @@ AUTHOR_LINKS = {
 # Image locations
 AVATAR_CANDIDATES = [
     "assets/darain_1.jpg",
-    "assets/profile.png",
-    "assets/avatar.jpg",
-    "assets/avatar.png",
+    "assets/darain_1.png",
+    "assets/darain_1.jpg",
+    "assets/darain_1.png",
 ]
 HERO_BG_CANDIDATES = [
     "assets/hero_bg.jpg",
@@ -97,13 +97,14 @@ st.markdown(
     }
     .block-container { padding-top: 0; padding-bottom: 2rem; }
 
-    /* Top Navigation */
+    /* Top Navigation (now below header, sticky at 64px) */
     .topnav {
-        position: sticky; top: 0; z-index: 1000;
+        position: sticky; top: 64px; z-index: 1000;
         height: 64px;
         background: rgba(10,14,25,0.65);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border);
+        border-radius: 12px;
     }
     .nav-inner {
         max-width: 1200px; margin: 0 auto;
@@ -141,7 +142,7 @@ st.markdown(
         color: #071216; text-decoration: none; border: 1px solid #1fb37a;
         margin-left: 6px;
     }
-    .nav-spacer { height: 12px; } /* push content below nav a bit */
+    .nav-spacer { height: 12px; }
 
     /* Title */
     .title {
@@ -351,7 +352,12 @@ def disclaimer_box():
     </div>
     """)
 
-# ----------- TOP NAV -----------
+# ----------- HEADER -----------
+html("<div class='title'>MindCare</div>")
+html("<div class='subtitle'>AI‑powered mental health screening — Text Analysis + PHQ‑9</div>")
+html('<div class="ecg"></div>')
+
+# ----------- NAV (now below header) -----------
 current_page = _get_page()
 nav_html = f"""
 <div class="topnav">
@@ -370,11 +376,6 @@ nav_html = f"""
 <div class="nav-spacer"></div>
 """
 html(nav_html)
-
-# ----------- HEADER -----------
-html("<div class='title'>MindCare</div>")
-html("<div class='subtitle'>AI‑powered mental health screening — Text Analysis + PHQ‑9</div>")
-html('<div class="ecg"></div>')
 
 # ----------- PAGES -----------
 if current_page == "about":
