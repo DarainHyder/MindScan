@@ -62,13 +62,6 @@ pip install -r requirements.txt
 3. Extract the CSV file
 4. Place it in: `data/raw/mental_health.csv`
 
-**Option B: DAIC-WOZ Dataset (Clinical interviews with PHQ scores)**
-
-1. Go to: https://dcapswoz.ict.usc.edu/
-2. Click "Request Access" and fill out the form
-3. Wait for email with download link (1-2 days)
-4. Download and extract to: `data/raw/daic_woz/`
-
 ### Step 3: Create Directory Structure
 
 ```bash

@@ -1,0 +1,108 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-3.11-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-3.11-
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        env:
+          # Tip: Helps pip pick CPU wheels for torch quickly
+          PIP_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install ruff
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Byte-compile all Python files
+        run: python -m compileall -q .
+
+      # Optional: sanity import on modules (avoid importing app.py directly as it depends on Streamlit runtime)
+      - name: Sanity import src modules
+        run: |
+          python - <<'PY'
+          import importlib
+          for mod in ["src.inference", "src.preprocess", "src.train_baseline", "src.train_transformer"]:
+              try:
+                  importlib.import_module(mod)
+                  print("Imported:", mod)
+              except Exception as e:
+                  print("WARN: Could not import", mod, "->", e)
+          PY
+
+      - name: Launch Streamlit (headless) and probe
+        env:
+          STREAMLIT_BROWSER_GATHERUSAGESTATS: "false"
+        run: |
+          mkdir -p logs
+          # Start Streamlit with a small health timeout
+          streamlit run app.py --server.headless true --server.port 8501 --browser.gatherUsageStats false > logs/streamlit.log 2>&1 &
+          echo $! > streamlit.pid
+
+          # Wait for server to come up
+          for i in {1..40}; do
+            if curl -sf http://127.0.0.1:8501/ > /dev/null; then
+              echo "Streamlit is up."
+              break
+            else
+              echo "Waiting for Streamlit to start... ($i)"
+              sleep 2
+            fi
+          done
+
+          # Probe root and app page
+          curl -sf http://127.0.0.1:8501/ > /dev/null
+          curl -sf "http://127.0.0.1:8501/?page=app" > /dev/null || true
+
+      - name: Show last 100 lines of Streamlit log (for context)
+        if: always()
+        run: |
+          tail -n 100 logs/streamlit.log || true
+
+      - name: Stop Streamlit
+        if: always()
+        run: |
+          kill $(cat streamlit.pid) || true
+
+      - name: Upload logs (if any)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs
+          path: logs/
+          if-no-files-found: ignore
