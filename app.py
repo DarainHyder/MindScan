@@ -1,9 +1,3 @@
-# app.py
-# Streamlit MindCare with:
-# - Top navigation bar (About | App)
-# - About landing (aligned hero with circular photo + optional background + gallery)
-# - App (Model Controls + Text Analysis + PHQ‑9 + Resources)
-# Uses src/inference.py: DepressionDetector, PHQ9Handler
 
 import os
 import sys
@@ -369,7 +363,7 @@ nav_html = f"""
     <div class="links">
       <a class="nav-link {'active' if current_page=='about' else ''}" href="?page=about">About</a>
       <a class="nav-link {'active' if current_page=='app' else ''}" href="?page=app">App</a>
-      <a class="nav-cta" href="https://github.com/your-handle" target="_blank">GitHub</a>
+      <a class="nav-cta" href="https://github.com/DarainHyder" target="_blank">GitHub</a>
     </div>
   </div>
 </div>
