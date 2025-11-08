@@ -37,7 +37,7 @@ AUTHOR_TECH = [
 AUTHOR_LINKS = {
     "GitHub": "https://github.com/DarainHyder",
     "LinkedIn": "https://www.linkedin.com/in/syed-darain-hyder-kazmi/",
-    "Email": "mailto:daarainhyder21@gmail.com",
+    "Email": "mailto:darainhyder21@gmail.com",
     "Portfolio": "https://darainhyder.netlify.app/",
 }
 
