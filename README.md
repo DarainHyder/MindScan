@@ -55,7 +55,7 @@ pip install -r requirements.txt
 
 ### Step 2: Download Dataset
 
-**Kaggle Reddit Mental Health Dataset (Recommended for Quick Start)**
+**Kaggle Reddit Mental Health Dataset**
 
 1. Go to: https://www.kaggle.com/datasets/suchintikasarkar/sentiment-analysis-for-mental-health
 2. Click "Download" (requires free Kaggle account)
@@ -304,7 +304,6 @@ python src/train_baseline.py
 
 Check that your CSV is in the correct location:
 - For Kaggle: `data/raw/mental_health.csv`
-- For DAIC-WOZ: `data/raw/daic_woz/`
 
 
 ## 📚 Additional Resources
@@ -317,7 +316,6 @@ Check that your CSV is in the correct location:
 
 ### Datasets
 
-- **DAIC-WOZ**: https://dcapswoz.ict.usc.edu/
 - **Kaggle Datasets**: https://www.kaggle.com/datasets
 
 ## 🤝 Contributing
