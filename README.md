@@ -337,4 +337,4 @@ This project is for educational purposes. Please check individual dataset licens
 
 Built with ❤️ for mental health awareness and education.
 
-**Remember: It's okay to not be okay. Help is available.**
+**Remember: It's okay to not be okay. Help is available.**# MindScan_-Mental-Health-Detection-System
